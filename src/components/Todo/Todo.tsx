@@ -1,8 +1,14 @@
-const Todo = (): JSX.Element => {
+import { TodosStructure } from "../../data/types";
+
+export interface TodoProps {
+  todo: TodosStructure;
+}
+
+const Todo = ({ todo: { id, isDone, name } }: TodoProps): JSX.Element => {
   return (
     <div>
       <button>V</button>
-      <span>Buy Groceries</span>
+      <span>{name}</span>
       <button>X</button>
     </div>
   );
