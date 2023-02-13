@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "./App.css";
 import TodosList from "./components/TodosList/TodosList";
 import useApi from "./hooks/useApi/useApi";
 
@@ -11,9 +10,10 @@ const App = (): JSX.Element => {
   }, [getTodoList]);
 
   return (
-    <div>
+    <>
+      <h1>To Do List</h1>
       <TodosList />
-    </div>
+    </>
   );
 };
 
