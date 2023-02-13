@@ -1,9 +1,11 @@
+import TodosListStyled from "./TodosListStyled";
+
 const TodosList = (): JSX.Element => {
   return (
-    <ul>
+    <TodosListStyled>
       <li>Buy groceries</li>
-      <li>Buy groceries</li>
-    </ul>
+      <li>Clean house</li>
+    </TodosListStyled>
   );
 };
 
