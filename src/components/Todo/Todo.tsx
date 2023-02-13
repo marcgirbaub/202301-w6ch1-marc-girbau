@@ -1,6 +1,5 @@
 import { TodosStructure } from "../../data/types";
-import { toggleTodoActionCreator } from "../../store/features/todos/todosSlice";
-import { useAppDispatch } from "../../store/hooks";
+import useApi from "../../hooks/useApi/useApi";
 import TodosStyled from "./TodoStyled";
 
 export interface TodoProps {
@@ -8,11 +7,7 @@ export interface TodoProps {
 }
 
 const Todo = ({ todo }: TodoProps): JSX.Element => {
-  const dispatch = useAppDispatch();
-
-  const toggleTodo = (todoToToggle: TodosStructure) => {
-    dispatch(toggleTodoActionCreator(todoToToggle));
-  };
+  const { toggleTodo } = useApi();
 
   const getCheck = () => {
     return todo.isDone ? "✅" : "☑️";
