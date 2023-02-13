@@ -8,7 +8,6 @@ const useApi = () => {
 
   const getTodoList = useCallback(async () => {
     try {
-    } catch (error) {
       const response = await fetch(
         "https://two02301-w6ch1-local-marc-girbau.onrender.com/todos"
       );
@@ -16,7 +15,7 @@ const useApi = () => {
       const todoList = (await response.json()) as TodosListStructure;
 
       dispatch(loadTodosActionCreator(todoList));
-
+    } catch (error) {
       return (error as Error).message;
     }
   }, [dispatch]);
