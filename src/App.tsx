@@ -1,7 +1,12 @@
 import "./App.css";
+import TodosList from "./components/TodosList/TodosList";
 
 const App = (): JSX.Element => {
-  return <div>Hola</div>;
+  return (
+    <div>
+      <TodosList />
+    </div>
+  );
 };
 
 export default App;

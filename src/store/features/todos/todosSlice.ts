@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TodosListStructure } from "../../../data/types";
 
-export const initialTodos: TodosListStructure = [];
+export const initialTodos: TodosListStructure = [
+  { id: 1, name: "Groceries", isDone: false },
+];
 
 export const todosSlice = createSlice({
   name: "todos",
@@ -15,3 +17,4 @@ export const todosSlice = createSlice({
 });
 
 export const { loadTodos: loadTodosActionCreator } = todosSlice.actions;
+export const todosReducer = todosSlice.reducer;
