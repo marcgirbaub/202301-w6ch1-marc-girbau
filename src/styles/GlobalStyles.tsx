@@ -26,6 +26,7 @@ button{
   border: none;
   cursor: pointer;
   font-family:inherit;
+  background-color: transparent;
 }
 `;
 
