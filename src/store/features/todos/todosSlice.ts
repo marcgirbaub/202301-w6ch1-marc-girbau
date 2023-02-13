@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TodosListStructure } from "../../../data/types";
+import { TodosListStructure, TodosStructure } from "../../../data/types";
 
 export const initialTodos: TodosListStructure = [];
 
@@ -11,8 +11,22 @@ export const todosSlice = createSlice({
       currentTodos: TodosListStructure,
       action: PayloadAction<TodosListStructure>
     ) => [...action.payload],
+    toggleTodo: (
+      currentTodos: TodosListStructure,
+      action: PayloadAction<TodosStructure>
+    ) => {
+      currentTodos.map((todo) =>
+        todo.id === action.payload.id
+          ? (todo.isDone = !todo.isDone)
+          : todo.isDone
+      );
+    },
   },
 });
 
-export const { loadTodos: loadTodosActionCreator } = todosSlice.actions;
+export const {
+  loadTodos: loadTodosActionCreator,
+  toggleTodo: toggleTodoActionCreator,
+} = todosSlice.actions;
+
 export const todosReducer = todosSlice.reducer;
