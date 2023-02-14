@@ -32,6 +32,12 @@ button{
 h1{
   padding-bottom: 2rem;
 }
+
+h3{
+  padding: 0;
+  margin: 0;
+  font-weight: inherit;
+}
 `;
 
 export default GlobalStyles;

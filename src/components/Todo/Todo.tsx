@@ -18,7 +18,7 @@ const Todo = ({ todo }: TodoProps): JSX.Element => {
       <button className="todo__check" onClick={() => toggleTodo(todo)}>
         {getCheck()}
       </button>
-      <span className="todo__name">{todo.name}</span>
+      <h3 className="todo__name">{todo.name}</h3>
       <button className="todo__delete" onClick={() => deleteTodo(todo)}>
         ❌
       </button>
