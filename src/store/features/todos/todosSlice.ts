@@ -11,6 +11,7 @@ export const todosSlice = createSlice({
       currentTodos: TodosListStructure,
       action: PayloadAction<TodosListStructure>
     ) => [...action.payload],
+
     toggleTodo: (
       currentTodos: TodosListStructure,
       action: PayloadAction<TodosStructure>
@@ -21,12 +22,18 @@ export const todosSlice = createSlice({
           : todo.isDone
       );
     },
+
+    deleteTodo: (
+      currentTodos: TodosListStructure,
+      action: PayloadAction<TodosStructure>
+    ) => currentTodos.filter((todo) => todo.id !== action.payload.id),
   },
 });
 
 export const {
   loadTodos: loadTodosActionCreator,
   toggleTodo: toggleTodoActionCreator,
+  deleteTodo: deleteTodoActionCreator,
 } = todosSlice.actions;
 
 export const todosReducer = todosSlice.reducer;
