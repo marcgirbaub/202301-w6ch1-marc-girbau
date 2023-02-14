@@ -13,9 +13,7 @@ const useApi = () => {
 
   const getTodoList = useCallback(async () => {
     try {
-      const response = await fetch(
-        "https://two02301-w6ch1-local-marc-girbau.onrender.com/todos"
-      );
+      const response = await fetch(process.env.REACT_APP_URL_API!);
 
       const todoList = (await response.json()) as TodosListStructure;
 
@@ -29,7 +27,7 @@ const useApi = () => {
     async (todo: TodosStructure) => {
       try {
         const response = await fetch(
-          `https://two02301-w6ch1-local-marc-girbau.onrender.com/todos/${todo.id}`,
+          `${process.env.REACT_APP_URL_API}${todo.id}`,
           {
             method: "PUT",
             body: JSON.stringify({ ...todo, isDone: !todo.isDone }),
@@ -55,7 +53,7 @@ const useApi = () => {
     async (todo: TodosStructure) => {
       try {
         const response = await fetch(
-          `https://two02301-w6ch1-local-marc-girbau.onrender.com/todos/${todo.id}`,
+          `${process.env.REACT_APP_URL_API}${todo.id}`,
           {
             method: "DELETE",
           }
@@ -76,20 +74,17 @@ const useApi = () => {
   const createTodo = useCallback(
     async (todo: TodosStructure) => {
       try {
-        const response = await fetch(
-          `https://two02301-w6ch1-local-marc-girbau.onrender.com/todos`,
-          {
-            method: "POST",
-            body: JSON.stringify({
-              id: todo.id,
-              name: todo.name,
-              isDone: todo.isDone,
-            }),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-            },
-          }
-        );
+        const response = await fetch(process.env.REACT_APP_URL_API!, {
+          method: "POST",
+          body: JSON.stringify({
+            id: todo.id,
+            name: todo.name,
+            isDone: todo.isDone,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        });
 
         if (!response.ok) {
           return;
