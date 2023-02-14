@@ -28,6 +28,10 @@ button{
   font-family:inherit;
   background-color: transparent;
 }
+
+h1{
+  padding-bottom: 2rem;
+}
 `;
 
 export default GlobalStyles;

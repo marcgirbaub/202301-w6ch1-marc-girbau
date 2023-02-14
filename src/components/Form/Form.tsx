@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TodosStructure } from "../../data/types";
 import useApi from "../../hooks/useApi/useApi";
+import FormStyled from "./FormStyled";
 
 const Form = (): JSX.Element => {
   const { createTodo } = useApi();
@@ -26,7 +27,7 @@ const Form = (): JSX.Element => {
   };
 
   return (
-    <form
+    <FormStyled
       className="form"
       autoComplete="off"
       noValidate
@@ -39,7 +40,7 @@ const Form = (): JSX.Element => {
       <div className="form__control">
         <button type="submit">create</button>
       </div>
-    </form>
+    </FormStyled>
   );
 };
 
