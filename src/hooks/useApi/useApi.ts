@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { TodosListStructure, TodosStructure } from "../../data/types";
 import {
+  deleteTodoActionCreator,
   loadTodosActionCreator,
   toggleTodoActionCreator,
 } from "../../store/features/todos/todosSlice";
@@ -49,7 +50,29 @@ const useApi = () => {
     [dispatch]
   );
 
-  return { getTodoList, toggleTodo };
+  const deleteTodo = useCallback(
+    async (todo: TodosStructure) => {
+      try {
+        const response = await fetch(
+          `https://two02301-w6ch1-local-marc-girbau.onrender.com/todos/${todo.id}`,
+          {
+            method: "DELETE",
+          }
+        );
+
+        if (!response.ok) {
+          return;
+        }
+
+        dispatch(deleteTodoActionCreator(todo));
+      } catch (error) {
+        return (error as Error).message;
+      }
+    },
+    [dispatch]
+  );
+
+  return { getTodoList, toggleTodo, deleteTodo };
 };
 
 export default useApi;

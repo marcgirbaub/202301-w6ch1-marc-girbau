@@ -7,7 +7,7 @@ export interface TodoProps {
 }
 
 const Todo = ({ todo }: TodoProps): JSX.Element => {
-  const { toggleTodo } = useApi();
+  const { toggleTodo, deleteTodo } = useApi();
 
   const getCheck = () => {
     return todo.isDone ? "✅" : "☑️";
@@ -19,7 +19,9 @@ const Todo = ({ todo }: TodoProps): JSX.Element => {
         {getCheck()}
       </button>
       <span className="todo__name">{todo.name}</span>
-      <button className="todo__delete">❌</button>
+      <button className="todo__delete" onClick={() => deleteTodo(todo)}>
+        ❌
+      </button>
     </TodosStyled>
   );
 };
