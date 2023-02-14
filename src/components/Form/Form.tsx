@@ -1,16 +1,21 @@
 const Form = (): JSX.Element => {
+  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
   return (
-    <form className="form" autoComplete="off" noValidate>
-      <div className="form__control">
-        <label htmlFor="id">id: </label>
-        <input type="text" id="id" />
-      </div>
+    <form
+      className="form"
+      autoComplete="off"
+      noValidate
+      onSubmit={onSubmitHandler}
+    >
       <div className="form__control">
         <label htmlFor="name">Name: </label>
         <input type="text" id="name" />
       </div>
       <div className="form__control">
-        <button type="submit">create to do</button>
+        <button type="submit">create</button>
       </div>
     </form>
   );

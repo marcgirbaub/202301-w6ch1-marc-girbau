@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { TodosListStructure, TodosStructure } from "../../data/types";
 import {
+  createTodoActionCreator,
   deleteTodoActionCreator,
   loadTodosActionCreator,
   toggleTodoActionCreator,
@@ -72,7 +73,37 @@ const useApi = () => {
     [dispatch]
   );
 
-  return { getTodoList, toggleTodo, deleteTodo };
+  const createTodo = useCallback(
+    async (todo: TodosStructure) => {
+      try {
+        const response = await fetch(
+          "`https://two02301-w6ch1-local-marc-girbau.onrender.com/todos/posts",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              id: todo.id,
+              name: todo.name,
+              isDone: todo.isDone,
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          return;
+        }
+
+        dispatch(createTodoActionCreator(todo));
+      } catch (error) {
+        return (error as Error).message;
+      }
+    },
+    [dispatch]
+  );
+
+  return { getTodoList, toggleTodo, deleteTodo, createTodo };
 };
 
 export default useApi;
