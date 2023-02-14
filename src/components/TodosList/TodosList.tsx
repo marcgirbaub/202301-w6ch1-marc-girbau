@@ -3,7 +3,7 @@ import Todo from "../Todo/Todo";
 import TodosListStyled from "./TodosListStyled";
 
 const TodosList = (): JSX.Element => {
-  const { todos } = useAppSelector((todo) => todo);
+  const todos = useAppSelector((todo) => todo.todos);
 
   return (
     <TodosListStyled>
