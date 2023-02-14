@@ -77,7 +77,7 @@ const useApi = () => {
     async (todo: TodosStructure) => {
       try {
         const response = await fetch(
-          "`https://two02301-w6ch1-local-marc-girbau.onrender.com/todos/posts",
+          `https://two02301-w6ch1-local-marc-girbau.onrender.com/todos`,
           {
             method: "POST",
             body: JSON.stringify({
