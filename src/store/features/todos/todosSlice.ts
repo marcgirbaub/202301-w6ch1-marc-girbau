@@ -15,13 +15,11 @@ export const todosSlice = createSlice({
     toggleTodo: (
       currentTodos: TodosListStructure,
       action: PayloadAction<TodosStructure>
-    ) => {
-      currentTodos.map((todo) =>
-        todo.id === action.payload.id
-          ? (todo.isDone = !todo.isDone)
-          : todo.isDone
-      );
-    },
+    ) =>
+      currentTodos.map((todo) => ({
+        ...todo,
+        isDone: todo.id === action.payload.id ? !todo.isDone : todo.isDone,
+      })),
 
     deleteTodo: (
       currentTodos: TodosListStructure,
